@@ -1,0 +1,168 @@
+ Ejercicio 6  
+----------------------------------------------------------------------------------------
+const colores = ["azul", "amarillo", "rojo", "verde", "café", "rosa"];
+const colorUsuario = prompt("Introduce un color:");
+
+if (colores.includes(colorUsuario)) {
+  console.log(`El color ${colorUsuario} se encuentra en el array.`);
+} else {
+  console.log(`El color ${colorUsuario} no se encuentra en el array.`);
+}
+
+-------------------------------------------------------------------------------------
+Ejercicio 7
+function numerosPares(arreglo) {
+    const pares = arreglo.filter(numero => numero % 2 === 0);
+    return pares;
+  }
+  numeros = [15, 20, 38, 56, 12, 5, 7, 45, 82];
+  numerosPares = numerosPares(numeros);
+  
+  console.log(numerosPares); 
+
+   
+----------------------------------------------------------------------------------------
+Ejercicio 8
+function palabrasConVocal(arreglo) {
+    const vocales = ["a", "e", "i", "o", "u"];
+    const palabras = arreglo.filter(palabra => vocales.includes(palabra[0].toLowerCase()));
+    return palabras;
+  }
+  
+   palabras = ["ensalada", "tarta", "palta", "uva", "iglesia", "ojo", "atun"];
+   palabrasConVocal = palabrasConVocal(palabras);
+  
+  console.log(palabrasConVocal); 
+--------------------------------------------------------------------------------------------
+Ejercicio 9
+function intercambiarElementos(arreglo, indice1, indice2) {
+    const elemento1 = arreglo[indice1];
+    const elemento2 = arreglo[indice2];
+    arreglo[indice1] = elemento2;
+    arreglo[indice2] = elemento1;
+    return arreglo;
+  }
+  
+  const arreglo = [1, 2, 3, 4, 5];
+  console.log(intercambiarElementos(arreglo, 1, 3)); 
+  -----------------------------------------------------------------------------------------
+<!-- ejercicio 10 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Noticias</title>
+  </head>
+  <body>
+    <div class="noticia">
+      <h2>Argentina pasa a cuartos de final</h2>
+      <p class="descripcion1">Argentina gana por penales</p>
+      <button onclick="cambiarTamaño('descripcion1')">Cambiar tamaño</button>
+    </div>
+    
+    <div class="noticia">
+      <h2>Argentina pasa a semifinales</h2>
+      <p class="descripcion2">Argentina goleo a Croacia</p>
+      <button onclick="cambiarTamaño('descripcion2')">Cambiar tamaño</button>
+    </div>
+    
+    <div class="noticia">
+      <h2>Argentina campeon del mundo</h2>
+      <p class="descripcion3">Messi levanta la copa del mundo </p>
+      <button onclick="cambiarTamaño('descripcion3')">Cambiar tamaño</button>
+    </div>
+    -------------------------------------------------------------------------------------------------------------
+    <!-- ejercicio 11 -->
+    <div class="news-1">
+      <h2>Curso Programacion</h2>
+      <p>Bienvenidos esto es un ejercicio de el curso de programacion Argentina programa .</p>
+      </div>
+      <div class="news-2">
+      <h2>El mate</h2>
+      <p>El mate es una infusión hecha con hojas de yerba mate (Ilex paraguariensis), planta originaria de las cuencas de los ríos Paraguay y Paraná, en Sudamérica.</p>
+      </div>
+      <div class="news-3">
+      <h2>Las Facturas</h2>
+      <p>Facturas es el nombre genérico con el cual se denomina en Argentina a la variedad de masas y piezas de confitería introducidas por la gran inmigración europea que recibió dicho país, y que con el tiempo fueron adaptadas al gusto local. En Uruguay se elaboran panificados algo parecidos, allí conocidos como bizcochos</p>
+      </div>
+      <button onclick="changeFont('news-1')">Agrandar texto 1</button>
+      <button onclick="changeFont('news-2')">Agrandar texto 2</button>
+      <button onclick="changeFont('news-3')">Agrandar texto 3</button>
+      
+      <script>
+      function changeFont(className) {
+        const news = document.getElementsByClassName(className);
+        for (let i = 0; i < news.length; i++) {
+          const currentSize = parseInt(window.getComputedStyle(news[i], null).getPropertyValue('font-size'));
+          news[i].style.fontSize = currentSize + 2 + 'px';
+        }
+      }
+      </script>
+    
+    <script>
+      function cambiarTamaño(nombreClase) {
+        const descripcion = document.querySelector("." + nombreClase);
+        descripcion.style.fontSize = "20px";
+      }
+    </script>
+  </body>
+</html>
+
+-------------------------------------------------------------------------------------------------------------------
+<!-- ejercicio 12 -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejemplo de ocultar elementos</title>
+	<style type="text/css">
+		.hide {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<p>River es campeon  <strong class="word">de la libertadores</strong>.</p>
+	<p>Boca es campeon<strong class="word">de la liga</strong>.</p>
+	<p>San lorenzo campeon <strong class="word"> de la Sudamericana</strong>.</p>
+	<button onclick="hideWords()">Ocultar palabras destacadas</button>
+	<script type="text/javascript">
+		function hideWords() {
+			const words = document.getElementsByClassName('word');
+			for (let i = 0; i < words.length; i++) {
+				words[i].classList.add('hide');
+			}
+		}
+	</script>
+</body>
+</html>
+----------------------------------------------------------------------------------------------
+<!-- ejercicio 15 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formulario de contacto</title>
+  </head>
+  <body>
+    <h1>Formulario de contacto</h1>
+    <form>
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+      <br><br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <br><br>
+      <label for="mensaje">Mensaje:</label>
+      <textarea id="mensaje" name="mensaje" rows="5" cols="40" required></textarea>
+      <br><br>
+      <button type="button" onclick="enviarFormulario()">Enviar</button>
+    </form>
+    <p id="mensaje-enviado" style="display:none;">Tu mensaje ha sido enviado!.</p>
+    <script>
+      function enviarFormulario() {
+        // Ocultar el formulario y mostrar el mensaje de envío
+        document.querySelector('form').style.display = 'none';
+        document.querySelector('#mensaje-enviado').style.display = 'block';
+      }
+    </script>
+  </body>
+</html>
